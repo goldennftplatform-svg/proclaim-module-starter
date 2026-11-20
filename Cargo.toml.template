@@ -1,0 +1,37 @@
+# SPDX-License-Identifier: MIT AND Apache-2.0
+#
+# TEMPLATE ONLY — NOT A REAL CARGO MANIFEST.
+#
+# Copy this file to `Cargo.toml` in your own module repository, then replace
+# every <PLACEHOLDER>. Do not commit the placeholder version as a manifest.
+#
+# `registry_core` is a workspace crate in the upstream git repository; it is
+# not something this template can fetch from crates.io. Point Cargo at the git
+# repository below. If the workspace layout or pins require it, add `rev` or
+# `branch` and copy the exact dependency lines for `nssa`, `nssa_core`,
+# `base58` and friends from the upstream root Cargo.toml. Do not invent
+# versions or URLs: verify with `cargo metadata` after copying.
+
+[package]
+name = "<YOUR_MODULE_CRATE_NAME>"
+version = "0.1.0"
+edition = "2021"
+license = "MIT AND Apache-2.0"
+description = "<ONE_LINE_DESCRIPTION_OF_YOUR_MODULE>"
+
+[lib]
+path = "src/lib.rs"
+
+[[example]]
+name = "register_and_search"
+path = "examples/register_and_search.rs"
+
+[dependencies]
+# The published repo, not a crates.io release:
+registry_core = { git = "https://github.com/goldennftplatform-svg/proclaim" }
+
+# PDA derivation in the example uses the same LEZ types as the upstream
+# `registry-api` crate. Copy the exact pinned declarations from the upstream
+# root Cargo.toml; do not guess a registry URL or version here.
+# nssa = { git = "<UPSTREAM_NSSA_REPO>", rev = "<PIN_FROM_UPSTREAM_CARGO_TOML>" }
+# nssa_core = { git = "<UPSTREAM_NSSA_CORE_REPO>", rev = "<PIN_FROM_UPSTREAM_CARGO_TOML>" }
